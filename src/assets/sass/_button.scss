@@ -1,0 +1,32 @@
+.btn {
+  --button-background-color: transparent;
+  --button-background-hover-color: #f1f1f1;
+  --button-text-color: black;
+
+  padding: 15px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+
+  &:hover {
+    background-color: var(--button-background-hover-color);
+  }
+
+  &-primary {
+    --button-background-color: #91d568;
+    --button-background-hover-color: #7bb955;
+    --button-text-color: white;
+  }
+
+  &-info {
+    --button-background-color: #87dcfd;
+    --button-background-hover-color: #7fd5f7;
+    --button-text-color: white;
+  }
+}

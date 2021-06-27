@@ -1,0 +1,27 @@
+{
+  "en-US": {
+    "currency": "$",
+    "home": {
+      "product": {
+        "button": "View Details"
+      }
+    },
+    "product": {
+      "brand": "Brand",
+      "color": "Color",
+      "outstock": "Out of Stock",
+      "button": "Add to Cart"
+    },
+    "header": {
+      "cart": {
+        "status": {
+          "added_cart": "Product added successfolly"
+        }
+      }
+    },
+    "cart": {
+      "remove": "Remove"
+    }
+  }
+}
+
