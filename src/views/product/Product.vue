@@ -7,6 +7,10 @@
         <div v-if="badges.length > 0" class="badges">
           <span v-for="(badge, index) in badges" :key="index">{{ badge }}</span>
         </div>
+        <div>
+          <p><strong>Brand:</strong>  {{ brand }}</p>
+          <p><strong>Color:</strong>  {{ color }}</p>
+        </div>
       </div>
 
       <div class="product__description">
@@ -35,7 +39,7 @@
 
 <script>
   import { mapGetters, mapActions } from 'vuex'
-  import StarRating from '../../components/StarRating';
+  import StarRating from '@/components/StarRating';
 
   export default {
     name: "Product",
@@ -50,10 +54,25 @@
     computed: {
       ...mapGetters('products', [ 'getById' ]),
       badges () {
-        return this.product.Badges.length ? this.product.Badges.split("|") : [];
+        return this.product.Badges.length ? this.resetSeparator(this.product.Badges).split("|") : [];
+      },
+      brand () {
+        return this.resetSeparator(this.product.Brand).replace(/\|/g, ", ");
+      },
+      color () {
+        return this.resetSeparator(this.product.Color).replace(/\|/g, ", ");
+      },
+    },
+    methods: {
+      ...mapActions('cart', [ 'addToCart' ]),
+      resetSeparator(value) {
+        return value
+          .replace(/ \| /g, '|')
+          .replace(/ \|/g, '|')
+          .replace(/\| /g, '|')
+          .replace(/\|/g, '|');
       }
     },
-    methods: mapActions('cart', [ 'addToCart' ]),
     created() {
       const id = this.$route.params.id;
       this.$store.dispatch('products/setProductById', id);
